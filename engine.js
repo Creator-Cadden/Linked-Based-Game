@@ -6,6 +6,7 @@ class Engine {
 
     constructor(firstSceneClass, storyDataUrl) {
 
+        this.inventory = [];
         this.firstSceneClass = firstSceneClass;
         this.storyDataUrl = storyDataUrl;
 
@@ -39,6 +40,12 @@ class Engine {
         }
     }
 
+    addItem(item) {
+        if (this.inventory.indexOf(item) === -1) {
+            this.inventory.push(item);
+        }
+    }
+    
     setTitle(title) {
         document.title = title;
         this.header.innerText = title;
