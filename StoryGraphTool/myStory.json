@@ -1,0 +1,111 @@
+{
+    "Title": "Forgotten Shell",
+    "Credits": "Created by Cadden Wu (caewu@ucsc.edu).",
+    "InitialLocation": "R000",
+    "Locations": {
+        "R000": {
+            "Body": "You are ejected from a casket and fall on the floor. A metallic dark room surrounds you with other caskets lining the wall you fell from. The only thing in the room is a door marked H001. ",
+            "Choices": [
+                {
+                    "Text": "Go through door H001",
+                    "Target": "H001"
+                }
+            ]
+        },
+        "H001": {
+            "Body": "The door opens to a hallway with three doors. The rooms R001 and R002 show unlocked but H002 is locked.",
+            "Choices": [
+                { 
+                    "Text": "Enter R001 - Storage Room", 
+                    "Target": "R001" 
+                },
+                { 
+                    "Text": "Enter R002 - Mirror Room", 
+                    "Target": "R002" 
+                },
+                { 
+                    "Text": "Try H002 - Locked Hallway", 
+                    "Target": "H002" 
+                },
+                { 
+                    "Text": "Go back to R000", 
+                    "Target": "R000" 
+                }
+            ]
+        },
+        "R001": {
+            "Body": "You see a storage room with multiple transparent storage cabinets, many with damaged chips of some sort. One storage is showing a glowing light.",
+            "Choices": [
+                {
+                    "Text": "Try to open the glowing storage",
+                    "Target": "R001_tryStorage"
+                },
+                {
+                    "Text": "Return to hallway (H001)",
+                    "Target": "H001"
+                }
+            ]
+        },
+        "R001_tryStorage": {
+            "Body": "You tug at the handle, but it won't budge. You need something thin and sharp to open it.",
+            "Choices": [
+                {
+                    "Text": "Use mirror the shard",
+                    "Action": "unlock_storage",
+                    "requiresItem": "MirrorShard"
+                },
+                {
+                    "Text": "Return to hallway (H001)",
+                    "Target": "H001"
+                }
+            ]
+        },
+        "R002": {
+            "Body": "The room is full of mirrors on every wall, one glint catches your eye.",
+            "Choices": [
+                {
+                    "Text": "Look in Mirror", 
+                    "Action": "look_mirror",
+                    "Next": "R002_afterMirror"
+                },
+                {
+                    "Text": "Return to hallway (H001)",
+                    "Target": "H001"  
+                }
+            ]
+        },
+        "R002_afterMirror": {
+            "Body": "You stare into the mirror. You see a robotic figure with circular beady eyes staring back. Cold, mechanical, inhuman. A deep hum vibrates through your core.",
+            "Choices": [
+                {
+                "Text": "Break the mirror and take a shard",
+                "Action": "get_item",
+                "givesItem": "MirrorShard",
+                "Next": "R002_afterBreak"
+                },
+                {
+                "Text": "Return to hallway (H001)",
+                "Target": "H001"
+                }
+            ]
+        },
+        "R002_afterBreak": {
+            "Body": "You shatter the mirror in fear and shock not being able to let out a scream. What are you? Who are you? Where are you. A shard reflects your face one last time. It fits your hand well, almost too well.",
+            "Choices": [
+                {
+                "Text": "Return to hallway (H001)",
+                "Target": "H001"
+                }
+            ]
+        },
+        "H002": {
+            "Body": "The hallway is locked. There is no way forward right now.",
+            "Choices": [
+                { 
+                     "Text": "Return to hallway (H001)", 
+                     "Target": "H001" 
+                }
+            ]
+    }
+}
+}
